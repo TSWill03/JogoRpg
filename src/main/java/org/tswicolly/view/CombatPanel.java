@@ -1,26 +1,41 @@
 package org.tswicolly.view;
 
-import org.tswicolly.model.Monster;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class CombatPanel extends JPanel {
-    private JLabel lblEnemy;
-    private JButton btnAttack;
+    private JButton attackButton;
+    private JButton defendButton;
+    private JTextArea combatLog;
 
     public CombatPanel() {
         setLayout(new BorderLayout());
-        lblEnemy = new JLabel("Inimigo", SwingConstants.CENTER);
-        btnAttack = new JButton("Atacar");
 
-        add(lblEnemy, BorderLayout.CENTER);
-        add(btnAttack, BorderLayout.SOUTH);
+        combatLog = new JTextArea();
+        combatLog.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(combatLog);
+        add(scrollPane, BorderLayout.CENTER);
+
+        attackButton = new JButton("Atacar");
+        defendButton = new JButton("Defender");
+
+        JPanel actionPanel = new JPanel();
+        actionPanel.setLayout(new GridLayout(1, 2, 10, 10));
+        actionPanel.add(attackButton);
+        actionPanel.add(defendButton);
+
+        add(actionPanel, BorderLayout.SOUTH);
     }
 
-    public static void blinkRed(Monster monster) {
+    public JButton getAttackButton() {
+        return attackButton;
     }
 
-    public JButton getBtnAttack() { return btnAttack; }
-    public JLabel getLblEnemy() { return lblEnemy; }
+    public JButton getDefendButton() {
+        return defendButton;
+    }
+
+    public void appendToCombatLog(String message) {
+        combatLog.append(message + "\n");
+    }
 }

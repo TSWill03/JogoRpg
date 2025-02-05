@@ -1,4 +1,4 @@
-package org.tswicolly.view;
+package org.tswicolly.controller;
 
 import org.tswicolly.view.*;
 

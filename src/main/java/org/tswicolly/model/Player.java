@@ -35,6 +35,8 @@ public class Player extends Observable implements Character {
 
     @Override
     public int calculateDamage() {
-        return strength + inventory.getEquippedAttackItem().getPower();
+        Item equippedItem = inventory.getEquippedAttackItem();
+        int itemPower = (equippedItem != null) ? equippedItem.getPower() : 0;
+        return strength + itemPower;
     }
 }
