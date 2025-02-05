@@ -1,4 +1,4 @@
-package org.tswicolly;
+package org.tswicolly.main;
 
 public class Main {
     public static void main(String[] args) {
