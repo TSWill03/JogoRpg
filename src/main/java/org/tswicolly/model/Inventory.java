@@ -1,20 +1,33 @@
 package org.tswicolly.model;
 
-import java.awt.*;
+import org.tswicolly.patterns.structural.composite.InventoryComposite;
+import org.tswicolly.patterns.structural.composite.InventoryItem;
 
 public class Inventory {
-    private Composite root;
+    private InventoryComposite root;
+    private Item equippedAttackItem; // Declaração da variável
 
     public Inventory() {
-        root = new Composite("Inventário");
+        root = new InventoryComposite("Inventário");
     }
 
-    public void addItem(Item item) {
-        root.add(new InventoryItem(item));
+    public void addItem(InventoryItem item) {
+        root.add(item);
+    }
+
+    public void addCategory(InventoryComposite category) {
+        root.add(category);
+    }
+
+    public void displayInventory() {
+        root.display();
     }
 
     public Item getEquippedAttackItem() {
-        // Lógica simplificada
-        return new AttackItem("Espada Básica", 5);
+        return equippedAttackItem;
+    }
+
+    public void setEquippedAttackItem(Item item) {
+        this.equippedAttackItem = item;
     }
 }

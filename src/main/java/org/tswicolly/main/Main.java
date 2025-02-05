@@ -1,5 +1,8 @@
 package org.tswicolly.main;
 
+import org.tswicolly.model.Inventory;
+import org.tswicolly.patterns.structural.composite.InventoryComposite;
+import org.tswicolly.patterns.structural.composite.InventoryItem;
 import org.tswicolly.view.CombatPanel;
 import org.tswicolly.view.GameController;
 import org.tswicolly.view.MainPanel;
@@ -8,17 +11,22 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(() -> {
-            MainPanel mainPanel = new MainPanel();
-            CombatPanel combatPanel = new CombatPanel();
+        Inventory inventory = new Inventory();
 
-            JFrame frame = new JFrame("RPG 2D");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(mainPanel);
-            frame.pack();
-            frame.setVisible(true);
+        InventoryItem sword = new InventoryItem("Espada");
+        InventoryItem shield = new InventoryItem("Escudo");
 
-            new GameController(mainPanel, combatPanel);
-        });
+        InventoryComposite potions = new InventoryComposite("Poções");
+        InventoryItem healthPotion = new InventoryItem("Poção de Vida");
+        InventoryItem manaPotion = new InventoryItem("Poção de Mana");
+
+        potions.add(healthPotion);
+        potions.add(manaPotion);
+
+        inventory.addItem(sword);
+        inventory.addItem(shield);
+        inventory.addCategory(potions);
+
+        inventory.displayInventory();
     }
 }

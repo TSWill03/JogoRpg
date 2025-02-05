@@ -1,5 +1,7 @@
 package org.tswicolly.model;
 
+import org.tswicolly.patterns.behavioral.strategy.AttackStrategy;
+
 public class Monster implements Character {
     private String name;
     private int health;
