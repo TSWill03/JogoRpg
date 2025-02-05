@@ -1,0 +1,21 @@
+package org.tswicolly.view;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class CombatPanel extends JPanel {
+    private JLabel lblEnemy;
+    private JButton btnAttack;
+
+    public CombatPanel() {
+        setLayout(new BorderLayout());
+        lblEnemy = new JLabel("Inimigo", SwingConstants.CENTER);
+        btnAttack = new JButton("Atacar");
+
+        add(lblEnemy, BorderLayout.CENTER);
+        add(btnAttack, BorderLayout.SOUTH);
+    }
+
+    public JButton getBtnAttack() { return btnAttack; }
+    public JLabel getLblEnemy() { return lblEnemy; }
+}
